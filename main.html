@@ -14,9 +14,9 @@
         const username = decodedToken[0];
         const timestamp = parseInt(decodedToken[1], 10);
 
-        // Allow access only if the token is less than 30 minutes old
+        // Allow access only if the token is less than 10 minutes old
         const tokenAge = Date.now() - timestamp;
-        if (tokenAge > 30 * 60 * 1000) {
+        if (tokenAge > 10 * 60 * 1000) {
             alert("Your session has expired. Please log in again.");
             localStorage.removeItem("authToken");
             window.location.href = "login.html";
