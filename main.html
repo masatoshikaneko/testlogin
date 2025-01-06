@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <script>
-    // Check if the user is logged in
-    if (localStorage.getItem("loggedIn") !== "true") {
-        // If not logged in, redirect to the login page
+    // Validate the session token
+    const authToken = localStorage.getItem("authToken");
+
+    if (!authToken) {
+        // No token found, redirect to login
         alert("You must log in first.");
         window.location.href = "login.html";
+    } else {
+        // Parse the token and validate timestamp
+        const decodedToken = atob(authToken).split(":");
+        const username = decodedToken[0];
+        const timestamp = parseInt(decodedToken[1], 10);
+
+        // Allow access only if the token is less than 30 minutes old
+        const tokenAge = Date.now() - timestamp;
+        if (tokenAge > 30 * 60 * 1000) {
+            alert("Your session has expired. Please log in again.");
+            localStorage.removeItem("authToken");
+            window.location.href = "login.html";
+        }
     }
 </script>
-
 
     
 <head>
