@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+    // Check if the user is logged in
+    if (localStorage.getItem("loggedIn") !== "true") {
+        // If not logged in, redirect to the login page
+        alert("You must log in first.");
+        window.location.href = "login.html";
+    }
+</script>
+
+
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
