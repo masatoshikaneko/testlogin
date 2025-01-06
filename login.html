@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - The Magarigawa Club</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        #login-form {
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 300px;
+            text-align: left;
+            background-color: #fff;
+        }
+        #login-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        #login-form input[type="text"],
+        #login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #login-form button:hover {
+            background-color: #555;
+        }
+        #login-error {
+            color: red;
+            display: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-form">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="handleLogin()">Login</button>
+        </form>
+        <p id="login-error">Invalid username or password.</p>
+    </div>
+
+    <script>
+        // Handle login functionality
+        function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Hardcoded username and password for demo purposes
+            const validUsername = "admin";
+            const validPassword = "password123";
+
+            if (username === validUsername && password === validPassword) {
+                // Redirect to the main page
+                window.location.href = "main.html";
+            } else {
+                // Show error message
+                document.getElementById("login-error").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
