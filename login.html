@@ -68,28 +68,28 @@
         <p id="login-error">Invalid username or password.</p>
     </div>
 
-    <script>
-        // Handle login functionality
-function handleLogin() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+<script>
+    function handleLogin() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-    // Hardcoded username and password for demo purposes
-    const validUsername = "admin";
-    const validPassword = "password123";
+        // Hardcoded username and password for demo purposes
+        const validUsername = "admin";
+        const validPassword = "pass123";
 
-    if (username === validUsername && password === validPassword) {
-        // Save a session token in localStorage
-        localStorage.setItem("loggedIn", "true");
+        if (username === validUsername && password === validPassword) {
+            // Generate a session token with a timestamp
+            const token = btoa(username + ":" + Date.now());
+            localStorage.setItem("authToken", token);
 
-        // Redirect to the main page
-        window.location.href = "main.html";
-    } else {
-        // Show error message
-        document.getElementById("login-error").style.display = "block";
+            // Redirect to the main page
+            window.location.href = "main.html";
+        } else {
+            // Show error message
+            document.getElementById("login-error").style.display = "block";
+        }
     }
-}
+</script>
 
-    </script>
 </body>
 </html>
